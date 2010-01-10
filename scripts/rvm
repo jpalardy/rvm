@@ -33,6 +33,10 @@ if [[ "$rvm_loaded_flag" != "1" ]] || [[ "$rvm_reload_flag" = "1" ]] ; then
     source $rvm_path/scripts/libraries
     source $rvm_path/scripts/cd
 
+    if [[ "$rvm_project_rvmrc" != 0 ]] ; then
+      alias cd="cd_rvm"
+    fi
+
     rvm_loaded_flag=1
 
     rvm_version="$(cat "${rvm_path}/lib/VERSION.yml" | tail -n 3 | sed 's/^.*: //g' | tr "\n" '.' | sed 's/\.$//')" ; export rvm_version
